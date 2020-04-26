@@ -18,7 +18,7 @@ async function signup() {
     if (pillElements.length != 0) {
         for (i = 0; i < pillElements.length; i++) {
             if (pillElements[i].value != "") {
-                pillResult += `${pillElements[i].value}, `;
+                pillResult += `${pillElements[i].value},`;
             }
         }
     }
