@@ -1,5 +1,6 @@
 errorBox = document.querySelector("#error");
 numOfPills = 0;
+addPill();
 
 async function signup() {
     event.preventDefault();
@@ -15,8 +16,10 @@ async function signup() {
     let pillElements = document.getElementsByClassName("pillInput");
     console.log(pillElements);
     if (pillElements.length != 0) {
-        for (i = 0; i<pillElements.length; i++) {
-            pillResult += `${pillElements[i].value}, `;
+        for (i = 0; i < pillElements.length; i++) {
+            if (pillElements[i].value != "") {
+                pillResult += `${pillElements[i].value}, `;
+            }
         }
     }
     console.log(pillResult);
@@ -41,7 +44,7 @@ async function signup() {
         errorBox.innerText = 'Email already exists.';
     } else if (result.data == "Please enter an email address.") {
         errorBox.innerText = 'Please enter an email address.';
-    } else if (result.data =='Invalid Name') {
+    } else if (result.data == 'Invalid Name') {
         errorBox.innerText = 'Invalid Name';
     } else if (result.data == 'Invalid email address.') {
         errorBox.innerText = 'Invalid email address.';
@@ -49,13 +52,15 @@ async function signup() {
         errorBox.innerText = 'Your password needs to be at least 6 characters.';
     } else if (result.data == 'Your passwords don\'t match.') {
         errorBox.innerText = 'Your passwords don\'t match.';
+    } else if (result.data == 'Please enter at least one pill.') {
+        errorBox.innerText = 'Please enter at least one pill.';
     } else {
         errorBox.innerText = `Successfully registered ${firstName} ${lastName}!`;
         clearForm();
     }
 }
 
-function clearForm(){
+function clearForm() {
     document.querySelector(".login-dark").innerHTML = `<form method="post">\
         <h2 class="sr-only">Sign Up Form</h2>\
         <div class="illustration"><i class="fas fa-user-plus"></i></div>\
