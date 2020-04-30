@@ -25,7 +25,7 @@ async function signup() {
     console.log(pillResult);
     await axios({
         method: 'POST',
-        url: 'https://syncfast.macrotechsolutions.us:9146/https://2dd6e7b6.ngrok.io/website/signUp',
+        url: 'https://pillpal.macrotechsolutions.us:9146/http://localhost/website/signUp',
         headers: {
             'Content-Type': 'application/json',
             'usertype': userType,
